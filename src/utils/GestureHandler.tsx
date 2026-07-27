@@ -38,22 +38,26 @@ export function GestureHandler({
   const doubleTap = Gesture.Tap()
     .maxDuration(250)
     .numberOfTaps(2)
+    .runOnJS(true)
     .onStart(onDoubleTap);
 
-  const longPress = Gesture.LongPress().onStart(onLongPress);
+  const longPress = Gesture.LongPress().runOnJS(true).onStart(onLongPress);
 
   const swipeLeft = Gesture.Fling()
     .direction(I18nManager.isRTL ? Directions.RIGHT : Directions.LEFT)
+    .runOnJS(true)
     .onStart(onSwipeLeft);
 
   const swipeRight = Gesture.Fling()
     .direction(I18nManager.isRTL ? Directions.LEFT : Directions.RIGHT)
+    .runOnJS(true)
     .onStart(onSwipeRight);
 
-  const swipeUp = Gesture.Fling().direction(Directions.UP).onStart(onSwipeUp);
+  const swipeUp = Gesture.Fling().direction(Directions.UP).runOnJS(true).onStart(onSwipeUp);
 
   const swipeDown = Gesture.Fling()
     .direction(Directions.DOWN)
+    .runOnJS(true)
     .onStart(onSwipeDown);
 
   let lastTap: number | null = null;
